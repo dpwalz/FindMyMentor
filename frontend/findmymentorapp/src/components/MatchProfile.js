@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './MatchProfile.css';
 import Button from '@mui/material/Button';
-import logo from './DC_Headshot1.jpg';
+import logo from '../images/default.jpg';
 
 function MatchProfile(props) {
 	const {
