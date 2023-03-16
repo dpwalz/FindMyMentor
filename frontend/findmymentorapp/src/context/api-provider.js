@@ -107,6 +107,27 @@ export function APIProvider(props) {
     }
   }
 
+  async function fetchUserData() {
+    try {
+    const response = await fetch(API_URL + "user", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    if(response.ok) {
+      console.log(data);
+      return data;
+    }
+  } catch (e) {
+    console.log(e);
+    return "Server communication error";
+  } 
+    
+  }
+
   return (
     <APIContext.Provider
       value={{
@@ -117,6 +138,7 @@ export function APIProvider(props) {
         register,
         getMatches,
         getUserInfo,
+        fetchUserData
       }}
     >
       {props.children}
